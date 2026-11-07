@@ -75,7 +75,8 @@ elif page == "Courses":
 
         else:
 
-     .       st.warning("Please enter a course name.")
+        else:
+            st.warning("Please enter a course name.")
 
        st.subheader("Your Courses")
 
@@ -89,8 +90,7 @@ elif page == "Courses":
             if st.button("🗑️ Delete", key=f"delete_{i}"):
                 st.session_state.courses.pop(i)
                 st.rerun()
-            
-elif page == "Notes & Materials":
+ 
 
 elif page == "Notes & Materials":
 

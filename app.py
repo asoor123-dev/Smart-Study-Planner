@@ -80,9 +80,16 @@ elif page == "Courses":
 
     st.subheader("Your Courses")
 
-    for course in st.session_state.courses:
+for i, course in enumerate(st.session_state.courses):
+    col1, col2 = st.columns([4, 1])
 
+    with col1:
         st.write(f"📖 {course['code']} — {course['name']}")
+
+    with col2:
+        if st.button("🗑️ Delete", key=f"delete_{i}"):
+            st.session_state.courses.pop(i)
+            st.rerun()
 
 elif page == "Notes & Materials":
 

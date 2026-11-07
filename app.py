@@ -73,9 +73,7 @@ elif page == "Courses":
 
             st.success("Course added successfully!")
 
-        else:
-
-        else:
+                else:
             st.warning("Please enter a course name.")
 
        st.subheader("Your Courses")

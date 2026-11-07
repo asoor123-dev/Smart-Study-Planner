@@ -69,11 +69,24 @@ elif page == "Notes & Materials":
             else:
                 st.session_state.notes.append({"course": course, "title": title.strip() or "Untitled", "text": note, "filename": uploaded.name if uploaded else None, "pdf": uploaded.getvalue() if uploaded else None})
                 st.success("Saved for this session.")
+        
         for i, item in enumerate(st.session_state.notes):
             with st.expander(f"{item['course']} — {item['title']}"):
                 st.write(item["text"] or "No text notes.")
+
                 if item["pdf"]:
-                    st.download_button("Download attached PDF", item["pdf"], file_name=item["filename"], mime="application/pdf", key=f"pdf_{i}")
+                    st.download_button(
+                        "Download attached PDF",
+                        item["pdf"],
+                        file_name=item["filename"],
+                        mime="application/pdf",
+                        key=f"download_note_{i}"
+                    )
+
+                if st.button("🗑️ Delete Note", key=f"delete_note_{i}"):
+                    st.session_state.notes.pop(i)
+                    st.rerun()
+
 
 elif page == "Study Planner":
     st.header("Study Planner")

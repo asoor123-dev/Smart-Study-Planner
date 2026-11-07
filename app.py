@@ -23,7 +23,6 @@ page = st.sidebar.radio(
     "Navigation",
 
     [
-
         "Dashboard",
 
         "Courses",
@@ -76,20 +75,22 @@ elif page == "Courses":
 
         else:
 
-            st.warning("Please enter a course name.")
+     .       st.warning("Please enter a course name.")
 
-    st.subheader("Your Courses")
+       st.subheader("Your Courses")
 
-for i, course in enumerate(st.session_state.courses):
-    col1, col2 = st.columns([4, 1])
+    for i, course in enumerate(st.session_state.courses):
+        col1, col2 = st.columns([4, 1])
 
-    with col1:
-        st.write(f"📖 {course['code']} — {course['name']}")
+        with col1:
+            st.write(f"📖 {course['code']} — {course['name']}")
 
-    with col2:
-        if st.button("🗑️ Delete", key=f"delete_{i}"):
-            st.session_state.courses.pop(i)
-            st.rerun()
+        with col2:
+            if st.button("🗑️ Delete", key=f"delete_{i}"):
+                st.session_state.courses.pop(i)
+                st.rerun()
+            
+elif page == "Notes & Materials":
 
 elif page == "Notes & Materials":
 
